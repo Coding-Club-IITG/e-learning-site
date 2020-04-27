@@ -31,7 +31,7 @@ def postsign(request):     #login with credentials
         message = "invalid credentials..Try signing up"           # if wrong credentials returns to home page
         return render(request, "home.html", {"msg":message})
 
-    if email in ['cse@iitg.ac.in','eee@iitg.ac.in','codingclub@iitg.ac.in','finance@iitg.ac.in']:
+    if email in ['cse@iitg.ac.in','eee@iitg.ac.in','codingclub@iitg.ac.in','finance@iitg.ac.in']: # if email belongs to these
         user_id = user['localId']
         name = database.child('ClubDept').child(user_id).child("name").get()
         all_courses = database.child(name.val()).child("courses").get()
@@ -64,6 +64,6 @@ def upload(request):
     name = database.child("Users").child(user_id).child("name").get()
     return render(request, "upload_common.html", {"name": name.val()})
 
-def logout(request):
+def logout(request):      # logout of the website
     auth.logout(request)
     return render(request,'home.html')
