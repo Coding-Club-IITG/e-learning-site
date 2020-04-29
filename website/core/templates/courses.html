@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Phase Shift by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>{{name}} COURSES</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,800&display=swap" rel="stylesheet">
+		
+			<link rel="stylesheet" href="{% static "css/skel.css" %}" />
+			<link rel="stylesheet" href="{% static "css/styles.css" %}" />
+			<link rel="stylesheet" href="{% static "css/style-wide.css" %}" />
+		
+        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+        
+<style type="text/css">
+    * Dropdown Button */
+    .dropbtn {
+      background-color: green;
+      color:white;
+      padding: 16px;
+      font-size: 26px;
+      border: 3px;
+    }
+    #button{
+    font-size:40px;
+    border:1px solid black;
+    border-radius:10px;
+    }
+    
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    /* Links inside the dropdown */
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {background-color: #ddd;}
+    
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {display: block;}
+    
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {background-color: grey;}
+    </style>
+        
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div class="wrapper style1">
+
+				<!-- Header -->
+					<div id="header" class="skel-panels-fixed">
+						<div id="logo">
+							<h1><a href="courses.html">Learn.IITG</a></h1>
+							
+						</div>
+						<nav id="nav">
+							<ul>
+								
+							</ul>
+						</nav>
+					</div>
+
+					<div id="banner" class="container">
+						<section>
+						<font color="black"><h1>{{name}}  Courses</h1></font>
+						</section>
+					</div>
+
+				+
+					
+
+				<!-- Extra -->
+				<div id="extra">
+						<div class="container">
+							<div class="row no-collapse-1">  
+								<section class="4u"> 
+                                        
+                                            
+
+									 <div class="box">
+									<ul>
+                                        {% for key,val in full.items %}
+                                        <li>
+                                        <font size="30">Course Name : {{key}}</font> 
+                                                    <br>
+                                        {% for key1,val1 in val.items %}
+                                            {% if 'OverView' == key1 %}
+                                            {% for key2,val2 in val1.items %}
+                                            <h2>Course OverView : {{val2}}</h2>
+                                            {% endfor %}
+                                            {% endif %}
+                                            {% if 'urls' == key1 %}
+                                            <br>
+                                            
+                                            
+                                            <!-- <ul>                                         
+                                            <li>{{key2}} : <a href={{val3}} target="blank">here</a></li>                                               
+                                            </ul> -->
+                                            <div class="dropdown">
+                                                    <button  class="dropbtn" id="button">Course Videos</button>
+                                                    <div class="dropdown-content">
+                                                            {% for key2,val2 in val1.items %}
+                                                            {% for key3,val3 in val2.items %}
+                                                      <a href={{val3}} target="blank">{{key2}}</a> 
+                                                      {% endfor %}                                          
+                                                      {%endfor %}                                                 
+                                                    </div>
+                                                  </div>
+                                            
+
+                                            <hr size="10" width="100%" color="black">
+                                            {% endif %}
+                                            {% endfor %}
+                                            {% endfor %}
+                                            
+                                        </li>
+                                        
+                                       
+                                       
+
+                                    </ul>
+                                    
+                                
+                                       
+            
+
+                                    </ul>
+                                 </div> 
+
+								</section>
+								
+							</div>
+						</div>
+					</div>
+               
+				<!-- Main -->
+					
+
+	</div>
+
+	<!-- Footer -->
+		
+	<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				<div class="copyright">
+					
+					Copyright&#x24B8; Learn.IITG
+				</div>
+			</div>
+		</div>
+
+		
+
+	</body>
+</html>

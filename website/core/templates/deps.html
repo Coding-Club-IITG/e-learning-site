@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Learn.IITG</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link rel="stylesheet" href="{% static "css/main.css" %}" />
+	
+		<style type="text/css">
+			#books{
+				width:450px;
+				height:300px;
+			}
+			#courses{
+				width:490px;
+				height:300px;
+			}
+			#logout{
+				text-decoration: none;
+				color:black;
+				size:10px;
+			}
+			#logout:hover{
+				text-decoration:"underline";
+			}
+			#dep{
+				
+				position:relative;
+				left:-700px;
+				font-weight:800;
+				font-size:25px;
+			}
+			
+			</style>
+	</head>
+	<body class="landing">
+
+		<!-- Header -->
+			<header id="header" >
+				<h1><a href="index.html">LEARN.IITG</a></h1>
+				<a id="dep">{{name}}</a>
+			</header>
+
+		<!-- One -->
+			<section id="one" class="wrapper style1">
+				<div class="inner">
+					<article class="feature right">
+							<span class="image"><img id="courses" src="{% static 'images/courses.jpg' %}" alt="" /></span>
+							<div class="content">
+								<h2>Courses By Best Teachers </h2>
+								<p>We will provide you best courses of every subject.Courses cover all subjects and you will surely find courses as per your interest.</p>
+								<ul class="actions">
+									<li>
+										<a href="{% url uc %}" class="button alt">More</a>
+									</li>
+								</ul>
+							</div>
+						</article>
+					<article class="feature left">
+						<span class="image"><img id="books" src="{% static 'images/books.jpg' %}" alt="" /></span>
+						<div class="content">
+							<h2>Books Uploaded By Students As well As Clubs</h2>
+							<p>We provide you books covering all departments and clubs like Electronics,Mechanical,Computer Science,etc.Books can be uploaded by anyone on the platform.</p>
+							<ul class="actions">
+								<li>
+									<a href="{% url 'dept' %}" class="button alt">More</a>
+								</li>
+							</ul>
+						</div>
+					</article>
+					
+				</div>
+			</section>
+
+		<!-- Scripts -->
+			<script src="{% static 'js/jquery.min.js' %}" ></script>
+			<script src="{% static 'js/skel.min.js' %}"></script>
+			<script src="{% static  'js/util.js' %}"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="{% static 'js/main.js' %}"></script>
+
+	</body>
+</html>

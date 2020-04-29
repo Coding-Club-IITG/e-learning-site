@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+	<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="#home" class="w3-bar-item w3-button"><b>Learn.IITG</b></a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+  <img class="w3-image" src="http://getwallpapers.com/wallpaper/full/f/7/d/834432-learning-wallpapers-1920x1080-download-free.jpg" alt="Architecture" width="1500" height="800">
+  <div class="w3-display-middle w3-margin-top w3-center">
+    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Learn.IITG</b></span> </h1>
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
+
+  <!-- Project Section -->
+  <div class="w3-container w3-padding-32" id="projects">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Departments</h3>
+  </div>
+
+  <div class="w3-row-padding">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding"><a href="{% url 'civil' %}">Civil Engineering</a></div>
+        <img src="https://i.ytimg.com/vi/-xbtnz4wdaA/maxresdefault.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding"><a href="{% url 'mech' %}">Mechanical Engineering</a></div>
+        <img src="https://i.ytimg.com/vi/W74y1RxN6BA/maxresdefault.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding"><a href="{% url 'eee' %}">EEE</a></div>
+        <img src="https://coursebuffet.com/course_images/coursera/eefun.png" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding"><a href="{% url 'ece' %}">ECE</a></div>
+        <img src="https://i0.wp.com/manipalblog.com/wp-content/uploads/2018/07/Electronics-and-Communication-Engineering.jpg?resize=678%2C381&ssl=1" alt="House" style="width:100%">
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-row-padding">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding"> <a href="{% url 'mnc' %}">Mathematics n' Computing</a></div>
+       <img src="https://i1.wp.com/s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2019/10/math_machine_learning.jpg.jpg?resize=1280%2C720&ssl=1" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding"><a href="{% url 'bio' %}">Biotech</a></div>
+        <img src="https://i0.wp.com/www.researchstash.com/wp-content/uploads/2018/03/BIRAC-Completes-Six-Years-of-Its-Services-to-Biotech-Industry.jpg?zoom=2&resize=1280%2C720&ssl=1" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding"><a href="{% url 'cse' %}">Computer Science</a></div>
+        <img src="https://www.wallpapermaiden.com/wallpaper/6492/download/1280x720/developer-javascript-codes-coding-web-development.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding"><a href="{% url 'chem' %}">Chemical</a></div>
+        <img src="https://media.clickondetroit.com/photo/2015/11/30/Live-in-the-D-Michigan-Science-Center-s-stage-show_849529_ver1.0_1280_720.jpg" alt="House" style="width:99%">
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="footer">
+  	Copyright&#x24B8; Learn.IITG
+  	
+  </div>
+
+
+  
+
+</body>
+</html>
