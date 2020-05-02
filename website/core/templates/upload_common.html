@@ -1,0 +1,179 @@
+{% load static %} 
+<!DOCTYPE HTML>
+<!--
+	Phase Shift by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>{{name}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,800&display=swap" rel="stylesheet">
+		
+			  <link rel="stylesheet" href="{% static 'css/skel.css'  %}" /> 
+			<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style-wide.css' %}" /> 
+
+			<!-- <link rel="stylesheet" href="skel.css" /> 
+			<link rel="stylesheet" href="style.css" />
+			<link rel="stylesheet" href="style-wide.css" /> -->
+		
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<style type="text/css">
+         
+		 #form{
+			 background-color:#B6B6B6;
+			 color:black;
+			 float:left;
+			 width:100%;
+			 font-weight: 800;
+		 }
+
+		</style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div class="wrapper style1">
+
+				<!-- Header -->
+					<div id="header" class="skel-panels-fixed">
+						<div id="logo">
+							<h1><a href="index.html">Learn.IITG</a></h1>
+							
+						</div>
+						<nav id="nav">
+							<ul>
+								<!-- <li><a href="">Home</a></li>
+								<li><a href="">Departments</a></li>
+								<li><a href="">Clubs</a></li> -->
+								<li><a href="/logout">Logout</a></li>
+							</ul>
+						</nav>
+					</div>
+
+					<div id="banner" class="container">
+						<section>
+						<h1>Hi {{name}} !!!</h1>
+						</section>
+					</div>
+
+	</div>
+
+<!-- <div>
+<button type="button" onclick="location.href='{% url 'log' %}'">Logout</button>
+</div> -->
+<div id="form">
+	<p>
+<H2 align="center">Upload New Documents !!!!</H2>
+</p>
+
+<form action="/upload_save/" method="post">
+ {% csrf_token %} 
+<p><label for="course" id="cl">Choose </label>
+<select id="course" name="dept">
+	<option selected="selected" disabled>Available Courses</option>
+    <option value="CSE" id="CSE">CSE</option>
+    <option value="EEE" id="CSE">EEE</option>
+    <option value="Coding" id="CSE">Coding CLub</option>
+    <option value="Finance" id="CSE">Finance</option>
+</select></p>
+   <!-- <input type="submit" value="Select" name="work"> -->
+
+Content Overview:
+<textarea rows="5" cols="40" name="overview" ></textarea>
+<br><br>
+</div> 
+Content Upload:
+    <input type="file" name="files[]" id="files">
+	<input type="hidden" name="url" id="url"><br><br>
+	<button type="button" onclick="uploadimage();">Upload</button><br><br>
+Content Title : 
+<input type="text" name="vtitle" required><br><br>
+<input type="submit" value="Submit">
+</form>
+</div>
+
+	<!-- Footer -->
+		
+	<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				<div class="copyright">
+					
+					Copyright&#x24B8; Learn.IITG
+				</div>
+			</div>
+		</div>
+
+	</body>
+	
+<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+
+	<script>
+            var _validFileExtensions = [".pdf, .doc"];    
+            function Validate(oForm) {
+                var arrInputs = oForm.getElementsByTagName("input");
+                for (var i = 0; i < arrInputs.length; i++) {
+                    var oInput = arrInputs[i];
+                    if (oInput.type == "file") {
+                        var sFileName = oInput.value;
+                        if (sFileName.length > 0) {
+                            var blnValid = false;
+                            for (var j = 0; j < _validFileExtensions.length; j++) {
+                                var sCurExtension = _validFileExtensions[j];
+                                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                                    blnValid = true;
+                                    break;
+                                }
+                            }
+                            
+                            if (!blnValid) {
+                                alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+                                return false;
+                            }
+                        }
+                    }
+                }
+              
+                return true;
+            }
+
+		var config = {
+		  apiKey: "AIzaSyDacvxdaPmR8qgOqHWXSFKYqJQP1aaDae0",
+		  authDomain: "kritiapp-2f73b.firebaseapp.com",
+		  databaseURL: "https://kritiapp-2f73b.firebaseio.com",
+		  projectId: "kritiapp-2f73b",
+		  storageBucket: "kritiapp-2f73b.appspot.com",
+		  messagingSenderId: "924829656507",
+		  appId: "1:924829656507:web:753c82b560e4a375d1d09e",
+		  measurementId: "G-13JKYMC09Z"
+	  };
+	  firebase.initializeApp(config);
+	  document.getElementById("dept").value = {{name}};
+	  // Get a reference to the storage service, which is used to create references in your storage bucket
+	  function uploadimage(){
+		var storage = firebase.storage();
+		var file = document.getElementById("files").files[0];
+		var storageRef = storage.ref();
+		var thisref = storageRef.child(file.name).put(file);
+		thisref.on('state_changed',function(snapshot){
+		console.log("file uplaoded succesfully");
+		},
+		function(error) {
+		},
+		function() {
+		// Upload completed successfully, now we can get the download URL
+		var downloadURL = thisref.snapshot.downloadURL;
+		console.log("got url");
+		document.getElementById("url").value = downloadURL;
+		alert("file uploaded successfully");
+	  });
+		  } 
+	</script>
+
+</html>

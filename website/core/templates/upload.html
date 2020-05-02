@@ -1,0 +1,187 @@
+ {% load static %} 
+<!DOCTYPE HTML>
+<!--
+	Phase Shift by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>{{name}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,800&display=swap" rel="stylesheet">
+		
+			  <link rel="stylesheet" href="{% static 'css/skel.css'  %}" /> 
+			<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style-wide.css' %}" /> 
+
+			<!-- <link rel="stylesheet" href="skel.css" /> 
+			<link rel="stylesheet" href="style.css" />
+			<link rel="stylesheet" href="style-wide.css" /> -->
+		
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<style type="text/css">
+         
+		 #form{
+			 background-color:#B6B6B6;
+			 color:black;
+			 float:left;
+			 width:100%;
+			 font-weight: 800;
+		 }
+
+		</style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div class="wrapper style1">
+
+				<!-- Header -->
+					<div id="header" class="skel-panels-fixed">
+						<div id="logo">
+							<h1><a href="index.html">Learn.IITG</a></h1>
+							
+						</div>
+						<nav id="nav">
+							<ul>
+								<!-- <li><a href="">Home</a></li>
+								<li><a href="">Departments</a></li>
+								<li><a href="">Clubs</a></li> -->
+								<li><a href="">Logout</a></li>
+							</ul>
+						</nav>
+					</div>
+
+					<div id="banner" class="container">
+						<section>
+						<h1>{{name}}</h1>
+						</section>
+					</div>
+
+				
+					
+
+				<!-- Extra -->
+					<!--<div id="extra">
+						<div class="container">
+							<div class="row no-collapse-1">
+								<section class="4u"> 
+									<div class="box">
+										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
+										<a href="#" class="button">Read More</a> </div>
+								</section>
+								
+							</div>
+						</div>
+					</div>-->
+
+				<!-- Main -->
+					
+
+	</div>
+
+<!-- <div>
+<button type="button" onclick="location.href='{% url 'log' %}'">Logout</button>
+</div> -->
+<div id="form">
+	<p>
+<H2 align="center">Upload New Courses !!!!</H2>
+</p>
+
+<form action="/post_create/" method="post">
+ {% csrf_token %} 
+<p><label for="course" id="cl">Course Title</label>
+<select id="course" name="title" onchange="yesnoCheck(this);">
+	<option selected="selected" disabled>Objects on page:</option>
+ {% for course in courses %} 
+	
+	<option value={{course}}>{{course}}</option>
+ {% endfor %} 
+	<option value="other" id="other">New Course</option>
+</select></p>
+   <!-- <input type="submit" value="Select" name="work"> -->
+<div id="ifYes" style="display: none;">
+	<p>
+Course Title : 
+<input type="text" name="work" ><br><br></p>
+Course Overview:
+<textarea rows="5" cols="40" name="progress" ></textarea>
+<br><br>
+</div> 
+Content Upload:
+    <input type="file" name="files[]" id="files">
+	<input type="hidden" name="url" id="url"><br><br>
+	<button type="button" onclick="uploadimage()">Upload</button><br><br>
+Content Title : 
+<input type="text" name="vtitle" required><br><br>
+<input type="submit" value="Submit">
+</form>
+</div>
+
+	<!-- Footer -->
+		
+	<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				<div class="copyright">
+					
+					Copyright&#x24B8; Learn.IITG
+				</div>
+			</div>
+		</div>
+
+	</body>
+	
+<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+<script type="text/javascript">
+    function yesnoCheck(that) {
+		if (that.value == "other") {
+	  alert("check");
+			document.getElementById("ifYes").style.display = "block";
+			document.getElementById("course").style.display = "none";
+			document.getElementById("cl").style.display = "none";
+		} else {
+			document.getElementById("ifYes").style.display = "none";
+		}
+	}
+</script>
+	<script>
+
+		var config = {
+		  apiKey: "AIzaSyDacvxdaPmR8qgOqHWXSFKYqJQP1aaDae0",
+		  authDomain: "kritiapp-2f73b.firebaseapp.com",
+		  databaseURL: "https://kritiapp-2f73b.firebaseio.com",
+		  projectId: "kritiapp-2f73b",
+		  storageBucket: "kritiapp-2f73b.appspot.com",
+		  messagingSenderId: "924829656507",
+		  appId: "1:924829656507:web:753c82b560e4a375d1d09e",
+		  measurementId: "G-13JKYMC09Z"
+	  };
+	  firebase.initializeApp(config);
+	  document.getElementById("dept").value = {{name}};
+	  // Get a reference to the storage service, which is used to create references in your storage bucket
+	  function uploadimage(){
+		var storage = firebase.storage();
+		var file = document.getElementById("files").files[0];
+		var storageRef = storage.ref();
+		var thisref = storageRef.child(file.name).put(file);
+		thisref.on('state_changed',function(snapshot){
+		console.log("file uplaoded succesfully");
+		},
+		function(error) {
+		},
+		function() {
+		// Upload completed successfully, now we can get the download URL
+		var downloadURL = thisref.snapshot.downloadURL;
+		console.log("got url");
+		document.getElementById("url").value = downloadURL;
+		alert("file uploaded successfully");
+	  });
+		  } 
+	</script>
+
+</html>
